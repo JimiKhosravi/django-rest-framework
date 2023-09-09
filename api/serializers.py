@@ -7,3 +7,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
         model = UserProfile
         # fields = ("name", "age")
         fields = "__all__"
+
+
+class CreateUserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        # fields = ("name", "age")
+        fields = ("name", "age", "bio", "email")
