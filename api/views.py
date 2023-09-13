@@ -5,6 +5,8 @@ from api.models import UserProfile
 from rest_framework import status
 from rest_framework.views import APIView
 # from rest_framework.permissions import IsAuthenticated
+from rest_framework.generics import ListAPIView, CreateAPIView
+
 
 # Create your views here.
 
@@ -85,3 +87,16 @@ class UserProfileView(APIView):
         user_profile_obj.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+# generics
+
+
+class ListUserProfileView(ListAPIView):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
+    # permission_classes=(IsAuthenticated,)
+
+
+class CreateUserProfileView(CreateAPIView):
+    queryset = UserProfile.objects.all()
+    serializer_class = CreateUserProfileSerializer
